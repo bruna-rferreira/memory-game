@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton');
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans');
+
+.login-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  .login__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  
+  .login__header img {
+    width: 250px;
+  }
+  
+  .login__header h1 {
+    color: rgb(158, 49, 185);
+    font-size: 3em;
+    font-family: 'Monoton';
+  }
+  
+  .login__input {
+    border: 2px solid rgb(185, 133, 216);
+    border-radius: 8px;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    max-width: 300px;
+    outline: none;
+    padding: 15px;
+    width: 100%;
+    font-family: 'Smooch Sans';
+  }
+  
+  .login__button {
+    background-color: rgb(219, 140, 243);
+    border: 3px solid #86c8ee;
+    border-radius: 8px;
+    color: #5d0179;
+    cursor: pointer;
+    font-size: 1.5em;
+    max-width: 300px;
+    padding: 15px;
+    width: 100%;
+    font-family: 'Monoton';
+  }
+  
+  .login__button:disabled {
+    background-color: #eee;
+    border: 2px solid #b36fb3;
+    color: #7e7e7e;
+    cursor: auto;
+  }
