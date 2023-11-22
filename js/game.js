@@ -1,6 +1,7 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
+const movesDisplay = document.querySelector('.moves');
 
 const characters = [
   'incriveis',
@@ -25,6 +26,11 @@ const createElement = (tag, className) => {
 
 let firstCard = '';
 let secondCard = '';
+let moves = 0; 
+
+const updateMovesDisplay = () => {
+  movesDisplay.innerHTML = ` ${moves}`;
+};
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
@@ -78,7 +84,8 @@ const revealCard = ({ target }) => {
 
     target.parentNode.classList.add('reveal-card');
     secondCard = target.parentNode;
-
+    moves += 1; 
+    updateMovesDisplay();
     checkCards();
 
   }
@@ -125,4 +132,5 @@ window.onload = () => {
   spanPlayer.innerHTML = localStorage.getItem('player');
   startTimer();
   loadGame();
+  updateMovesDisplay();
 }
