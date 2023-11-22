@@ -3,6 +3,7 @@ const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
 const movesDisplay = document.querySelector('.moves');
 
+
 const characters = [
   'incriveis',
   'moana',
@@ -29,15 +30,21 @@ let secondCard = '';
 let moves = 0; 
 
 const updateMovesDisplay = () => {
-  movesDisplay.innerHTML = ` ${moves}`;
+  movesDisplay.innerHTML = `${moves}`;
 };
+
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 24) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`);
+    
+    const playerName = spanPlayer.innerHTML;
+    const gameTime = timer.innerHTML;
+    const playerMoves = movesDisplay.innerHTML;
+    const queryString = `?player=${encodeURIComponent(playerName)}&time=${encodeURIComponent(gameTime)}&moves=${encodeURIComponent(playerMoves)}`;
+    window.location.href = `final.html${queryString}`;
   }
 }
 

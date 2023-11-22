@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/final.css">
+
+  <title>Parabéns!</title>
+
+</head>
+<body>
+  <div>
+    <main>
+    <header>
+    <h1>Parabéns!</h1>
+    <p>Você finalizou o jogo!</p>
+    <p>Movimentos: <span id="moves"></span></p>
+    <p>Tempo: <span id="time"></span></p>
+    </header>
+
+    <button class="final__button" onclick="restartGame()">Reiniciar</button>
+    </main>
+
+    <script>
+      // Função para obter parâmetros da URL
+      const getParameterByName = (name, url) => {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+        const results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const movesElement = document.getElementById('moves');
+        const timeElement = document.getElementById('time');
+
+        // Obter parâmetros da URL
+        const moves = getParameterByName('moves');
+        const time = getParameterByName('time');
+
+        // Exibir informações na página
+        movesElement.textContent = moves || 'N/A'; // Se moves for nulo, exibe 'N/A'
+        timeElement.textContent = time ? `${time} segundos` : 'N/A'; // Se time for nulo, exibe 'N/A'
+      });
+
+      // Função para reiniciar o jogo
+      const restartGame = () => {
+        // Redireciona de volta para a página do jogo
+        window.location.href = 'game.html';
+      }
+    </script>
+  </div>
+</body>
+</html>
