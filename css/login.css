@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron');
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans');
 
 .login-form {
@@ -24,7 +24,8 @@
   .login__header h1 {
     color: rgb(158, 49, 185);
     font-size: 3em;
-    font-family: 'Monoton';
+    word-spacing: 10px;
+    font-family: 'Orbitron';
   }
   
   .login__input {
@@ -50,7 +51,7 @@
     max-width: 300px;
     padding: 15px;
     width: 100%;
-    font-family: 'Monoton';
+    font-family: 'Orbitron';
   }
   
   .login__button:disabled {

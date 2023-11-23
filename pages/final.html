@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +9,35 @@
   <link rel="stylesheet" href="../css/final.css">
 
   <title>Parabéns!</title>
-
 </head>
+
 <body>
   <div>
     <main>
-    <header>
-    <h1>Parabéns!</h1>
-    <p>Você finalizou o jogo!</p>
-    <p>Movimentos: <span id="moves"></span></p>
-    <p>Tempo: <span id="time"></span></p>
-    </header>
+      <header>
+        <h1>Parabéns!</h1>
+        <p>Você finalizou o jogo!</p>
+        <p>Movimentos: <span id="moves"></span></p>
+        <p>Tempo: <span id="time"></span></p>
+      </header>
 
-    <button class="final__button" onclick="restartGame()">Reiniciar</button>
+      <button class="final__button" onclick="restartGame()">Reiniciar</button>
+
+      <div id="history">
+        <h2>Histórico de Jogadas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Movimentos</th>
+              <th>Tempo</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
     </main>
 
     <script>
-      // Função para obter parâmetros da URL
       const getParameterByName = (name, url) => {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
@@ -38,22 +51,44 @@
       document.addEventListener('DOMContentLoaded', () => {
         const movesElement = document.getElementById('moves');
         const timeElement = document.getElementById('time');
+        const historyBody = document.getElementById('historyBody');
 
-        // Obter parâmetros da URL
         const moves = getParameterByName('moves');
         const time = getParameterByName('time');
 
-        // Exibir informações na página
-        movesElement.textContent = moves || 'N/A'; // Se moves for nulo, exibe 'N/A'
-        timeElement.textContent = time ? `${time} segundos` : 'N/A'; // Se time for nulo, exibe 'N/A'
+        movesElement.textContent = moves || 'N/A';
+        timeElement.textContent = time ? `${time} segundos` : 'N/A';
+
+        // Obter histórico do armazenamento local
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+
+        // Verificar se a jogada atual já está no histórico
+        const isDuplicate = history.some(entry => entry.moves === moves && entry.time === time);
+
+        // Adicionar a jogada atual ao histórico, se não for duplicada
+        if (moves && time && !isDuplicate) {
+          history.push({ moves, time });
+          // Ordenar o histórico por movimentos e tempo (em ordem crescente)
+          history.sort((a, b) => a.moves - b.moves || a.time - b.time);
+          // Salvar o histórico atualizado no armazenamento local
+          localStorage.setItem('history', JSON.stringify(history));
+        }
+
+        // Exibir histórico na página
+        for (const entry of history) {
+          const row = historyBody.insertRow();
+          const movesCell = row.insertCell(0);
+          const timeCell = row.insertCell(1);
+          movesCell.textContent = entry.moves;
+          timeCell.textContent = `${entry.time} segundos`;
+        }
       });
 
-      // Função para reiniciar o jogo
       const restartGame = () => {
-        // Redireciona de volta para a página do jogo
         window.location.href = 'game.html';
       }
     </script>
   </div>
 </body>
+
 </html>

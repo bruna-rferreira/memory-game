@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron');
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans');
 
 
@@ -32,7 +32,6 @@ header {
 
 .final__button {
   background-color: rgba(255, 255, 255, 0.5);
-  border: 3px solid #86c8ee;
   border-radius: 8px;
   color: #5d0179;
   cursor: pointer;
@@ -40,5 +39,36 @@ header {
   max-width: 300px;
   padding: 15px;
   width: 100%;
-  font-family: 'Monoton';
+  font-family: 'Orbitron';
+}
+
+#history {
+  width: 30%;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  margin-top: 20px;
+  font-family: 'Smooch Sans';
+  color: rgb(49, 103, 185);
+  font-size: 1.2em;
+}
+
+#history table {
+  margin: 0 auto; /* Adicionado para centralizar a tabela */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#history th, #history td, #history h2 {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 3px solid #86c8ee;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center; /* Adicionado para centralizar o texto */
+}
+
+#history th {
+  font-size: 1.2em;
 }
